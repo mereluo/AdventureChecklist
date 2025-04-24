@@ -2,13 +2,13 @@
 
 ## Screenshots
 
-![My Adventures](screenshots/myadventure.png)
+<img src="screenshots/myadventure.png" width="300">
 *My Adventures - View and manage your adventure checklists*
 
-![New Adventure](screenshots/newadventure.png)
+<img src="screenshots/newadventure.png" width="300">
 *New Adventure - Create a new adventure with customizable options*
 
-![My Templates](screenshots/mytemplates.png)
+<img src="screenshots/mytemplates.png" width="300">
 *My Templates - Access and use pre-made checklist templates*
 
 
