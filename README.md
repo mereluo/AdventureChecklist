@@ -1,6 +1,16 @@
 # Adventure Checklist
 
-![My Adventures](mainpage.png)
+## Screenshots
+
+![My Adventures](screenshots/myadventure.png)
+*My Adventures - View and manage your adventure checklists*
+
+![New Adventure](screenshots/newadventure.png)
+*New Adventure - Create a new adventure with customizable options*
+
+![My Templates](screenshots/mytemplates.png)
+*My Templates - Access and use pre-made checklist templates*
+
 
 ## Table of Contents
 
@@ -138,7 +148,7 @@ The app uses UserDefaults to store:
 
 All data is stored locally on the device. 
 
-## Demonstration
+## Video Walkthrough
 <div>
     <a href="https://www.loom.com/share/ae8ed17684ea4615acf8a2cfd16b58f0">
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/ae8ed17684ea4615acf8a2cfd16b58f0-44f291bd334bb56e-full-play.gif">
