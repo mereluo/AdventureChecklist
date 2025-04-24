@@ -65,19 +65,28 @@ class NewAdventureViewController: UIViewController {
         let isInternational = internationalSwitch.isOn
         
         // Get checklist items from selected template or default template
-        let checklistItems: [ChecklistItem]
-        if let selectedTemplate = selectedTemplate {
-            print("Using selected template: \(selectedTemplate.name) with \(selectedTemplate.checklistItems.count) items")
-            // Create a deep copy of the checklist items
+        var checklistItems: [ChecklistItem] = []
+        
+        if useTemplateSwitch.isOn, let selectedTemplate = selectedTemplate {
+            // Use selected template
             checklistItems = selectedTemplate.checklistItems.map { ChecklistItem(name: $0.name, isChecked: false) }
         } else {
-            print("No template selected, using default template")
-            let defaultTemplates = DataManager.shared.loadTemplates()
-            let templatePrefix = isInternational ? "International" : "Domestic"
-            let templateName = "\(templatePrefix) \(selectedTripType)"
-            let defaultTemplate = defaultTemplates.first { $0.name == templateName }
-            // Create a deep copy of the checklist items
-            checklistItems = (defaultTemplate?.checklistItems ?? []).map { ChecklistItem(name: $0.name, isChecked: false) }
+            // Start with empty checklist
+            checklistItems = []
+        }
+        
+        // If international, add passport and currency items
+        if isInternational {
+            // Check if these items already exist in the checklist
+            let passportExists = checklistItems.contains { $0.name == "Passport/ID" }
+            let currencyExists = checklistItems.contains { $0.name == "Local Currency" }
+            
+            if !passportExists {
+                checklistItems.append(ChecklistItem(name: "Passport/ID"))
+            }
+            if !currencyExists {
+                checklistItems.append(ChecklistItem(name: "Local Currency"))
+            }
         }
         
         let adventure = Adventure(
@@ -89,8 +98,6 @@ class NewAdventureViewController: UIViewController {
             isInternational: isInternational,
             checklistItems: checklistItems
         )
-        
-        print("Creating adventure with \(adventure.checklistItems.count) items")
         
         // Save the adventure
         DataManager.shared.saveAdventure(adventure)
@@ -126,14 +133,9 @@ class NewAdventureViewController: UIViewController {
     @IBAction func useTemplateSwitchChanged(_ sender: UISwitch) {
         templatesTableView.isHidden = !sender.isOn
         if sender.isOn {
-            let allTemplates = DataManager.shared.loadTemplates()
-            let defaultTemplateNames = ["Domestic Camping", "Domestic Snowboarding", "Domestic City", "Domestic Business",
-                                      "International Camping", "International Snowboarding", "International City", "International Business"]
-            
-            // Filter out default templates
-            templates = allTemplates.filter { !defaultTemplateNames.contains($0.name) }
+            // Load all templates (both default and user-created)
+            templates = DataManager.shared.loadTemplates()
                 .sorted { $0.name < $1.name }
-            print("Loaded \(templates.count) custom templates")
             templatesTableView.reloadData()
         } else {
             selectedTemplate = nil

@@ -67,8 +67,7 @@ class DataManager {
     
     func loadTemplates() -> [Template] {
         var templates: [Template] = []
-        let defaultTemplateNames = ["Domestic Camping", "Domestic Snowboarding", "Domestic City", "Domestic Business",
-                                  "International Camping", "International Snowboarding", "International City", "International Business"]
+        let defaultTemplateNames = ["Camping", "Snowboarding", "City", "Business"]
         
         // First try to load existing templates
         if let data = UserDefaults.standard.data(forKey: templatesKey) {
@@ -77,15 +76,11 @@ class DataManager {
             }
         }
         
-        // Check if all default templates exist
-        let existingDefaultNames = Set(templates.map { $0.name })
-        let missingDefaults = defaultTemplateNames.filter { !existingDefaultNames.contains($0) }
-        
-        if !missingDefaults.isEmpty {
-            // Create missing default templates
+        // Only create default templates on first launch
+        if templates.isEmpty {
+            // Create all default templates
             let defaultTemplates = createDefaultTemplates()
-            let missingTemplates = defaultTemplates.filter { missingDefaults.contains($0.name) }
-            templates.append(contentsOf: missingTemplates)
+            templates = defaultTemplates
             saveTemplates(templates)
         }
         
@@ -93,7 +88,7 @@ class DataManager {
     }
     
     private func createDefaultTemplates() -> [Template] {
-        let domesticCampingItems = [
+        let campingItems = [
             ChecklistItem(name: "Tent + stakes"),
             ChecklistItem(name: "Sleeping bag & pad"),
             ChecklistItem(name: "Headlamp / flashlight"),
@@ -155,55 +150,13 @@ class DataManager {
             ChecklistItem(name: "Day bag or briefcase")
         ]
         
-        let internationalItems = [
-            ChecklistItem(name: "Passport (+ visa if needed)"),
-            ChecklistItem(name: "Travel insurance"),
-            ChecklistItem(name: "International SIM card / eSIM"),
-            ChecklistItem(name: "Power adapter (plug converter)"),
-            ChecklistItem(name: "Currency / travel credit card"),
-            ChecklistItem(name: "Emergency contacts"),
-            ChecklistItem(name: "Copy of itinerary / hotel confirmations"),
-            ChecklistItem(name: "Language phrasebook or app"),
-            ChecklistItem(name: "Medications with prescriptions"),
-            ChecklistItem(name: "COVID vaccination card (if required)")
-        ]
-        
-        let internationalCampingItems = domesticCampingItems + internationalItems + [
-            ChecklistItem(name: "Multi-tool"),
-            ChecklistItem(name: "Travel pillow"),
-            ChecklistItem(name: "Compact cookware")
-        ]
-        
-        let internationalSnowboardingItems = snowboardingItems + internationalItems + [
-            ChecklistItem(name: "Ski insurance info"),
-            ChecklistItem(name: "Boot dryer"),
-            ChecklistItem(name: "International phone setup")
-        ]
-        
-        let internationalCityItems = cityItems + internationalItems + [
-            ChecklistItem(name: "Translation app"),
-            ChecklistItem(name: "Offline maps"),
-            ChecklistItem(name: "Pickpocket-safe bag")
-        ]
-        
-        let internationalBusinessItems = businessItems + internationalItems + [
-            ChecklistItem(name: "Presentation files backed up (USB + cloud)"),
-            ChecklistItem(name: "Time zone watch app"),
-            ChecklistItem(name: "Foreign etiquette research")
-        ]
-        
         let templates = [
-            Template(name: "Domestic Camping", tripType: "Camping", checklistItems: domesticCampingItems),
-            Template(name: "Domestic Snowboarding", tripType: "Snowboarding", checklistItems: snowboardingItems),
-            Template(name: "Domestic City", tripType: "City", checklistItems: cityItems),
-            Template(name: "Domestic Business", tripType: "Business", checklistItems: businessItems),
-            Template(name: "International Camping", tripType: "Camping", checklistItems: internationalCampingItems),
-            Template(name: "International Snowboarding", tripType: "Snowboarding", checklistItems: internationalSnowboardingItems),
-            Template(name: "International City", tripType: "City", checklistItems: internationalCityItems),
-            Template(name: "International Business", tripType: "Business", checklistItems: internationalBusinessItems)
+            Template(name: "Camping", tripType: "Camping", checklistItems: campingItems),
+            Template(name: "Snowboarding", tripType: "Snowboarding", checklistItems: snowboardingItems),
+            Template(name: "City", tripType: "City", checklistItems: cityItems),
+            Template(name: "Business", tripType: "Business", checklistItems: businessItems)
         ]
         
-        print("Created templates: \(templates.map { $0.name })") // Debug print
         return templates
     }
     
