@@ -60,25 +60,25 @@ Adventure Checklist is a travel planning app that helps users organize their pac
 
 ### 2. Screen Archetypes
 
-- [ ] New Adventure Screen
+- [x] New Adventure Screen
 * User can enter trip details
 * User can select trip type
 * User can choose to use a template
 * User can set dates
 
-- [ ] My Adventures Screen
+- [x] My Adventures Screen
 * User can view list of their adventures
 * User can select an adventure to view/edit
 * User can see basic trip info for each adventure
 
-- [ ] Checklist Screen
+- [x] Checklist Screen
 * User can view and manage checklist items
 * User can check/uncheck items
 * User can add new items
 * User can delete items
 * User can see packing progress
 
-- [ ] My Templates Screen
+- [x] My Templates Screen
 * User can view their saved templates
 * User can create new templates from adventures
 * User can use templates for new adventures
