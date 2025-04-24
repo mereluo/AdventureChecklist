@@ -6,15 +6,12 @@
   <tr>
     <td style="text-align: center;">
       <img src="screenshots/myadventure.png" width="250">
-      <p><em>My Adventures</em></p>
     </td>
     <td style="text-align: center;">
       <img src="screenshots/newadventure.png" width="250">
-      <p><em>New Adventure</em></p>
     </td>
     <td style="text-align: center;">
       <img src="screenshots/mytemplates.png" width="250">
-      <p><em>My Templates</em></p>
     </td>
   </tr>
 </table>
