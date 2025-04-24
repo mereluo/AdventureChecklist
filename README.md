@@ -1,5 +1,7 @@
 # Adventure Checklist
 
+![My Adventures](mainpage.png)
+
 ## Table of Contents
 
 1. [Overview](#Overview)
@@ -135,3 +137,10 @@ The app uses UserDefaults to store:
 - Default templates for different trip types
 
 All data is stored locally on the device. 
+
+## Demonstration
+<div>
+    <a href="https://www.loom.com/share/ae8ed17684ea4615acf8a2cfd16b58f0">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/ae8ed17684ea4615acf8a2cfd16b58f0-44f291bd334bb56e-full-play.gif">
+    </a>
+</div>
