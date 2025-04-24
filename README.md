@@ -2,27 +2,22 @@
 
 ## Screenshots
 
-<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-    <div style="text-align: center;">
-        <img src="screenshots/myadventure.png" width="250">
-        <p><em>My Adventures</em></p>
-    </div>
-    <div style="text-align: center;">
-        <img src="screenshots/newadventure.png" width="250">
-        <p><em>New Adventure</em></p>
-    </div>
-    <div style="text-align: center;">
-        <img src="screenshots/mytemplates.png" width="250">
-        <p><em>My Templates</em></p>
-    </div>
-</div>
-
-*My Adventures - View and manage your adventure checklists*
-
-*New Adventure - Create a new adventure with customizable options*
-
-*My Templates - Access and use pre-made checklist templates*
-
+<table>
+  <tr>
+    <td style="text-align: center;">
+      <img src="screenshots/myadventure.png" width="250">
+      <p><em>My Adventures</em></p>
+    </td>
+    <td style="text-align: center;">
+      <img src="screenshots/newadventure.png" width="250">
+      <p><em>New Adventure</em></p>
+    </td>
+    <td style="text-align: center;">
+      <img src="screenshots/mytemplates.png" width="250">
+      <p><em>My Templates</em></p>
+    </td>
+  </tr>
+</table>
 
 ## Table of Contents
 
